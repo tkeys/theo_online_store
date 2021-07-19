@@ -19,9 +19,26 @@ from django.conf import settings
 from django.conf.urls.static import static
 from shop import views
 
+app_name = 'shop'
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('contact/', views.contact_view, name='contact'),
-    path('', views.all_products, name='all_products'),
+    path('', views.product_all, name='product_all'),
+    path('<slug:slug>', views.product_detail, name='product_detail'),
+    path('shop/<slug:category_slug>/', views.category_list, name='category_list'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
+
+
+
+

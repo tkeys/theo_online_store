@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+app_name = 'shop'
+
 
 # Create your models here
 class Category(models.Model):
@@ -17,8 +19,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    # return reverse('shop:product_by_category', args=[self.slug])
+    #def get_absolute_url(self):
+        #return reverse('shop:product_by_category', args=[self.slug])
 
 
 class Product(models.Model):
@@ -26,7 +28,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveBigIntegerField()
     available = models.BooleanField(default=True)
@@ -42,5 +44,5 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    # return reverse('shop:product_detail', args=[self.slug])
+    #def get_absolute_url(self):
+        #return reverse('shop:product_detail', args=[self.slug])
