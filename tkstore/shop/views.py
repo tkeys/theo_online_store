@@ -1,13 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Category, Product
+from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView, FormView
+from .forms import ContactForm
 
 
 # Create your views here.
-def contact_view(request, *args, **kwargs):
-    return render(request, "contact.html", {})
-
-
 def product_all(request):
     products = Product.objects.all()
     return render(request, 'home.html', {'products': products})
@@ -28,3 +26,9 @@ def categories(request):
     return {
         'categories': Category.objects.all()
     }
+
+
+class ContactView(FormView):
+    template_name = "contact.html"
+    form_class = ContactForm
+    #success_url = reverse_lazy("movies")

@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>This is a contact test page</title>
-    <h1>This is my test contact page </h1>
-</head>
-<body>
+{% extends "./base.html" %}
 
-</body>
-</html>
+
+{% block content %}
+<h2>Get in touch with us</h2>
+<form method="post">
+   {% csrf_token %}
+   {{ form.as_p }}
+   <input type="submit" value="Contact us" class="btn btn-primary">
+
+
+</form>
+
+{%endblock %}
