@@ -21,17 +21,15 @@ from shop import views
 from shop.views import ContactView
 from django.urls import include
 
-
 app_name = 'shop'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('contact/', views.contact_view, name='contact'),
     path('', views.product_all, name='product_all'),
     path('<slug:slug>', views.product_detail, name='product_detail'),
     path('shop/<slug:category_slug>/', views.category_list, name='category_list'),
     path('contact/', ContactView.as_view(), name='contact'),
-
+    path('basket/', include('basket.urls', namespace='basket')),
 
 ]
 
