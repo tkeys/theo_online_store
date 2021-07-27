@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from shop import views
-from shop.views import ContactView
+from shop.views import ContactView, CreateCategory, CreateProduct
 from django.urls import include
 
 app_name = 'shop'
@@ -30,6 +30,8 @@ urlpatterns = [
     path('shop/<slug:category_slug>/', views.category_list, name='category_list'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('basket/', include('basket.urls', namespace='basket')),
+    path("shop/create", CreateCategory.as_view(), name="create_category"),
+    path("shop/addproduct", CreateProduct.as_view(), name="create_product"),
 
 ]
 

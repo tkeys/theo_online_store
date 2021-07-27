@@ -31,4 +31,19 @@ def categories(request):
 class ContactView(FormView):
     template_name = "contact.html"
     form_class = ContactForm
-    #success_url = reverse_lazy("movies")
+    # success_url = reverse_lazy("movies")
+
+
+class CreateCategory(CreateView):
+    template_name = "create_category.html"
+    model = Category
+    fields = "__all__"
+    permission_required = "viewer.add_movie"
+
+
+class CreateProduct(CreateView):
+    template_name = "create_product.html"
+    model = Product
+    fields = "__all__"
+    permission_required = "viewer.add_movie"
+
