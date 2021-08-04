@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Category, Product
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView, FormView
-from .forms import ContactForm
+from .forms import ContactForm, SignUpForm
 
 
 # Create your views here.
@@ -46,4 +46,9 @@ class CreateProduct(CreateView):
     model = Product
     fields = "__all__"
     permission_required = "viewer.add_movie"
+
+
+class SignUpView(CreateView):
+    template_name = "registration/create_account.html"
+    form_class = SignUpForm
 

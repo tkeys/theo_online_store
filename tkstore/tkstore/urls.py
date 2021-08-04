@@ -30,8 +30,8 @@ urlpatterns = [
     path('shop/<slug:category_slug>/', views.category_list, name='category_list'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('basket/', include('basket.urls', namespace='basket')),
-    path("shop/create", CreateCategory.as_view(), name="create_category"),
-    path("shop/addproduct", CreateProduct.as_view(), name="create_product"),
+    path("shop/newcategory", CreateCategory.as_view(), name="create_category"),
+    path("shop/newproduct", CreateProduct.as_view(), name="create_product"),
 
 ]
 
